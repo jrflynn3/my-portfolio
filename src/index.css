@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +65,96 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+* {
+  margin: 0;
+  background-color: thistle;
+  font-family: 'Afacad Flux';
+  color: black;
+}
+
+body {
+  /* line-height: 1.58; */
+}
+
+.wrapper, body, html, #root {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper > * {
+  /* flex: 1 1 0; */
+}
+
+.header {
+  background-color: lightgray;
+  display: flex;
+  font-size: 18px;
+  letter-spacing: 2px;
+  justify-content: space-between;
+  padding: 1em;
+  text-align: center;
+  position: sticky;
+  transition: top 0.3s;
+}
+
+.header-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-links a {
+  padding: 5px 1em;
+}
+
+.main {
+  background-color: aquamarine;
+  flex: 1;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  background-image: url('./Assets/image-from-rawpixel-id-3864432-jpeg.jpg');
+  background-repeat: none;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  font-size: 30px;
+}
+
+.title h1,
+.title h2 {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a.active { 
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #38383B;
+  color: white;
+  padding: 6px;
+  font-size: 1em;
+  letter-spacing: 2px;
+}
+
+.icon {
+  display: flex;
+  font-size: 1.5em;
+  font-weight: 800;
 }
