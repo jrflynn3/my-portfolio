@@ -6,7 +6,7 @@ export const Header = () => {
     <div id="page-header" className="header">
       <nav>
         <NavLink to="/">
-          <div className="icon">JF</div>
+          <img className="icon" src="./src/Assets/JF-logo-orange-gray.png"></img>
         </NavLink>
       </nav>
       <NavBar />
