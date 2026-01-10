@@ -1,11 +1,24 @@
 import { NavLink } from "react-router";
 
+const Link = ({ path, text }: { path: string; text: string }) => (
+  <NavLink
+    to={path}
+    className={({ isActive }) =>
+      `px-[1em] hover:font-black focus:underline focus:font-black${
+        isActive ? " font-black underline" : ""
+      }`
+    }
+  >
+    {text}
+  </NavLink>
+);
+
 export const NavBar = () => {
   return (
-    <nav className="header-links header-text">
-      <NavLink to="/portfolio">Portfolio</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
-      <NavLink to="/about">About</NavLink>
+    <nav className="flex justify-between text-primary tracking-[2px] text-[1.2em] text-center m-auto py-[5px]">
+      <Link path="/portfolio" text="Portfolio" />
+      <Link path="/contact" text="Contact" />
+      <Link path="/about" text="About" />
     </nav>
   );
 };

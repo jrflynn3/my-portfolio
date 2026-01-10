@@ -5,7 +5,7 @@ export const Portfolio = () => {
   return (
     <>
       <Header />
-      <div className="main">
+      <div className="flex flex-col min-h-screen bg-primary">
         <div className="title">Portfolio</div>
       </div>
       <Footer />

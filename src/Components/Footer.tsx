@@ -2,10 +2,15 @@ import { NavLink } from "react-router";
 
 export const Footer = () => {
   return (
-    <div className="footer">
-      <div className="footer-text">John Flynn ©</div>
+    <div className="flex bg-tertiary p-5 justify-between">
+      <div className="text-[1.1em] text-primary tracking-[2px]">
+        John Flynn ©
+      </div>
 
-      <NavLink className="footer-text" to="mailto:hello@john-flynn.co">
+      <NavLink
+        className="text-[1.1em] text-primary tracking-[2px]"
+        to="mailto:hello@john-flynn.co"
+      >
         Contact Me
       </NavLink>
     </div>

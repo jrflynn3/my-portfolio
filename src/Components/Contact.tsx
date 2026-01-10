@@ -5,8 +5,8 @@ export const Contact = () => {
   return (
     <>
       <Header />
-      <div className="main">
-        <div className="title">Contact</div>
+      <div className="flex flex-col min-h-screen bg-primary">
+        <div>Contact</div>
       </div>
       <Footer />
     </>
