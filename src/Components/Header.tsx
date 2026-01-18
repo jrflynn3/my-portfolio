@@ -1,19 +1,67 @@
 import { NavLink } from "react-router";
 import { NavBar } from "./NavBar";
 import logo from "../Assets/Other/JF-logo-orange-gray.png";
+import { useState } from "react";
+
+const HomeIcon = () => (
+  <NavLink to="/">
+    <img className="flex h-10 w-auto pl-2.5" src={logo}></img>
+  </NavLink>
+);
+
+const MenuButton = ({ onClick: handleOnClick }: { onClick: () => void }) => {
+  return (
+    <button
+      className="self-start bg-[#FF5D04] rounded-md"
+      onClick={handleOnClick}
+    >
+      <svg
+        className="h-10 text-primary hover:text-black shadow"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          fillRule="evenodd"
+          d="M2 7a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m0 5a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m1 4a1 1 0 1 0 0 2h18a1 1 0 1 0 0-2z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </button>
+  );
+};
 
 export const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const setMenuState = () => {
+    console.log("button press");
+    setMenuOpen((val) => !val);
+  };
+
   return (
     <div
       id="page-header"
-      className="flex bg-secondary justify-between p-5 sticky transition-[top] duration-300 shadow-lg/15"
+      className="flex bg-secondary sticky transition-[top] duration-300 shadow-lg/15"
     >
-      <nav>
-        <NavLink to="/">
-          <img className="flex h-10 w-auto pl-2.5" src={logo}></img>
-        </NavLink>
+      <nav className="md:flex hidden flex-1 justify-between p-5 items-center">
+        <HomeIcon />
+        <NavBar vertical={false} />
       </nav>
-      <NavBar />
+
+      <nav className="md:hidden flex flex-1 p-5">
+        {menuOpen ? (
+          <div className="flex flex-1 justify-between">
+            <NavBar vertical={true} />
+            <MenuButton onClick={setMenuState} />
+          </div>
+        ) : (
+          <div className="flex flex-1 justify-between">
+            <HomeIcon />
+            <MenuButton onClick={setMenuState} />
+          </div>
+        )}
+      </nav>
     </div>
   );
 };
