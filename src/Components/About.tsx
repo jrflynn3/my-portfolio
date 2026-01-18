@@ -7,22 +7,22 @@ export const About = () => {
     <>
       <Header />
       <div className="flex flex-col items-center pt-20 min-h-screen bg-primary">
-        <div className="flex max-w-[550px]">
+        <div className="flex flex-col md:flex-row items-center max-w-[650px] px-4 md:px-0">
           <div>
             <img
               src={profilePic}
-              className="h-[250px] w-[250px] min-h-[150px] min-w-[150px] object-cover object-top rounded-full"
+              className="h-32 w-32 sm:h-40 sm:w-40 md:h-[250px] md:w-[250px] object-cover object-top rounded-full"
               alt="professional headshot"
             />
           </div>
-          <div className="flex flex-col justify-center pl-3">
+          <div className="flex flex-col justify-center md:pl-3 mt-4 md:mt-0 text-center md:text-left">
             <div className="font-extrabold text-4xl">John Flynn</div>
             <div className="text-lg">Lead Software Developer</div>
             <div className="font-thin">React / React Native</div>
           </div>
         </div>
 
-        <div className=" max-w-[650px] text-xl font-extralight py-15">
+        <div className="max-w-[650px] text-base sm:text-lg md:text-xl font-extralight px-4 sm:px-6 md:px-0 py-6 sm:py-8 md:py-10">
           I’m a lead software developer focused on building user-friendly
           applications with React and React Native. I enjoy mentoring other
           developers and working closely with teams to build clean, maintainable
@@ -31,13 +31,10 @@ export const About = () => {
           getting lost in a good science fiction story. I'm always open to
           connecting and networking.
         </div>
-        <hr className="w-[400px] pt-10" />
-        <div className="font-thin ">reach me here</div>
-        <div className="flex py-5">
-          <a
-            href="https://www.linkedin.com/in/john-flynn-890412154/"
-            className="pr-10"
-          >
+        <hr className="w-full max-w-[400px] my-6 md:my-10 border-t border-secondary" />
+        <div className="font-thin pt-5 text-sm md:text-base">reach me here</div>
+        <div className="flex items-center justify-center gap-6 md:gap-10 py-5">
+          <a href="https://www.linkedin.com/in/john-flynn-890412154/">
             <svg
               className="h-10 w-10 hover:text-secondary"
               viewBox="0 0 93.06 93.06"
@@ -46,7 +43,7 @@ export const About = () => {
               <path d="M11.185.08C5.004.08.001 5.092 0 11.259c0 6.173 5.003 11.184 11.186 11.184 6.166 0 11.176-5.011 11.176-11.184C22.362 5.091 17.351.08 11.185.08M1.538 30.926h19.287V92.98H1.538zM69.925 29.383c-9.382 0-15.673 5.144-18.248 10.022h-.258v-8.479H32.92v62.053h19.27V62.281c0-8.093 1.541-15.932 11.575-15.932 9.89 0 10.022 9.256 10.022 16.451v30.178H93.06V58.942c0-16.707-3.605-29.559-23.135-29.559" />
             </svg>
           </a>
-          <a href="https://github.com/jrflynn3" className=" pr-10">
+          <a href="https://github.com/jrflynn3">
             <svg
               className="h-10 w-10 hover:text-secondary"
               fill="currentColor"
@@ -63,7 +60,7 @@ export const About = () => {
             >
               <title>email [#1572]</title>
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M10 12.474 0 3.649V15h20V3.649zm.001-2.662L0 .981V0h20v.981z"
               />
             </svg>
