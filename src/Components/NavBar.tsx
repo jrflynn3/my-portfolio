@@ -13,9 +13,12 @@ const Link = ({ path, text }: { path: string; text: string }) => (
   </NavLink>
 );
 
-export const NavBar = () => {
+export const NavBar = ({ vertical }: { vertical: boolean }) => {
+  const verticalStyles = "flex flex-col text-[1.50em] gap-5 text-primary";
+  const horizontalStyles =
+    "flex justify-between text-primary tracking-[2px] text-[1.2em] text-center m-auto";
   return (
-    <nav className="flex justify-between text-primary tracking-[2px] text-[1.2em] text-center m-auto py-[5px]">
+    <nav className={vertical ? verticalStyles : horizontalStyles}>
       <Link path="/portfolio" text="Portfolio" />
       <Link path="/contact" text="Contact" />
       <Link path="/about" text="About" />
