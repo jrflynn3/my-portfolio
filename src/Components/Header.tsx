@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import { NavBar } from "./NavBar";
 import logo from "../Assets/Other/JF-logo-orange-gray.png";
 import { useState } from "react";

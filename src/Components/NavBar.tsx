@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 
 const Link = ({ path, text }: { path: string; text: string }) => (
   <NavLink
