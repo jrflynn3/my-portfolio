@@ -35,7 +35,6 @@ export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const setMenuState = () => {
-    console.log("button press");
     setMenuOpen((val) => !val);
   };
 
