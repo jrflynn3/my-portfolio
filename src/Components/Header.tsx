@@ -5,14 +5,24 @@ import { useState } from "react";
 
 const HomeIcon = () => (
   <NavLink to="/">
-    <img className="flex h-10 w-auto pl-2.5" src={logo}></img>
+    <img className="h-10 w-auto pl-2.5" src={logo} alt="Home"></img>
   </NavLink>
 );
 
-const MenuButton = ({ onClick: handleOnClick }: { onClick: () => void }) => {
+const MenuButton = ({
+  onClick: handleOnClick,
+  expanded,
+}: {
+  onClick: () => void;
+  expanded: boolean;
+}) => {
   return (
     <button
-      className="self-start bg-[#FF5D04] rounded-md"
+      className="self-start bg-[#FF5D04] p-1 rounded-md"
+      type="button"
+      aria-label="Toggle menu"
+      aria-controls="mobile-menu"
+      aria-expanded={expanded}
       onClick={handleOnClick}
     >
       <svg
@@ -52,12 +62,12 @@ export const Header = () => {
         {menuOpen ? (
           <div className="flex flex-1 justify-between">
             <NavBar vertical={true} />
-            <MenuButton onClick={setMenuState} />
+            <MenuButton onClick={setMenuState} expanded={menuOpen} />
           </div>
         ) : (
           <div className="flex flex-1 justify-between">
             <HomeIcon />
-            <MenuButton onClick={setMenuState} />
+            <MenuButton onClick={setMenuState} expanded={menuOpen} />
           </div>
         )}
       </nav>
