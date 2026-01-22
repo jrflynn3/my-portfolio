@@ -51,7 +51,7 @@ export const Header = () => {
   return (
     <div
       id="page-header"
-      className="flex bg-secondary sticky transition-[top] duration-300 shadow-lg/15"
+      className="flex bg-secondary sticky transition-[top] duration-300 shadow-xl/30"
     >
       <nav className="md:flex hidden flex-1 justify-between p-5 items-center">
         <HomeIcon />
