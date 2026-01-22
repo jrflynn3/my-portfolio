@@ -36,7 +36,7 @@ export const About = () => {
         <div className="flex items-center justify-center gap-6 md:gap-10 py-5">
           <a href="https://www.linkedin.com/in/john-flynn-890412154/">
             <svg
-              className="h-10 w-10 hover:text-secondary"
+              className="h-10 w-10 transition delay-100 hover:text-secondary"
               viewBox="0 0 93.06 93.06"
               fill="currentColor"
             >
@@ -45,7 +45,7 @@ export const About = () => {
           </a>
           <a href="https://github.com/jrflynn3">
             <svg
-              className="h-10 w-10 hover:text-secondary"
+              className="h-10 w-10 transition delay-100 hover:text-secondary"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -54,7 +54,7 @@ export const About = () => {
           </a>
           <a href="mailto:hello@john-flynn.co">
             <svg
-              className="h-10 w-10 hover:text-secondary"
+              className="h-10 w-10 transition delay-100 hover:text-secondary"
               viewBox="0 -2.5 20 20"
               fill="currentColor"
             >
