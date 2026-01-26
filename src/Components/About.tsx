@@ -1,6 +1,6 @@
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import profilePic from "../Assets/Other/profilepic.jpeg";
+import profilePic from "../Assets/Images/profilepic.jpeg";
 
 export const About = () => {
   return (
