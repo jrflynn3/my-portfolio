@@ -1,4 +1,5 @@
 import { Footer } from "./Footer";
+import GhostButton from "./GhostButton";
 import { Header } from "./Header";
 
 type ProjectCardProps = {
@@ -11,7 +12,7 @@ type ProjectCardProps = {
 
 const Chip = ({ text }: { text: string }) => {
   return (
-    <div className="border border-gray-300 inline rounded-full px-2 font-thin text-sm sm:text-base">
+    <div className="border border-gray-300 inline rounded-full px-2 font-thin text-sm sm:text-base whitespace-nowrap shrink-0">
       {text}
     </div>
   );
@@ -25,27 +26,48 @@ const ProjectCard = ({
   src,
 }: ProjectCardProps) => {
   return (
-    <div className="flex flex-col items-center bg-white rounded-t-3xl overflow-hidden shadow-lg/30">
-      <div className="flex">
-        <img
-          src={src}
-          className="h-120 w-120 object-cover object-top overflow-hidden shrink-0 shadow-md/30"
-          alt={`${name} preview`}
-        />
+    <div className="flex flex-col min-w-[440px] max-w-[550px] max-h-[700px] items-center justify-center bg-white rounded-t-3xl rounded-b-md overflow-hidden shadow-lg/20 hover:shadow-xl/20 transition-all delay-100">
+      <div className="h-[500px] w-full flex justify-center items-start">
+        <img src={src} alt={`${name} preview`} />
       </div>
-      <div className="flex flex-col w-full min-h-[150px] bg-[#e8e8e8] px-5 py-3">
+      <div className="flex flex-col w-full min-h-[170px] bg-[#f2f5f5] px-5 py-3">
         <div className="flex justify-between">
           <h1 className="font-bold text-2xl">{name}</h1>
           <a className="flex justify-center items-center pb-2" href={link}>
-            <div className="hover:underline">github</div>
-            <img
-              src="src/Assets/Icons/link-out-svgrepo-com.svg"
-              className="h-4 w-auto pl-1"
-            />
+            <svg
+              className="h-4 w-auto pr-1 text-secondary"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M13.5 10.5L21 3"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 3L21 3L21 8"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M21 14V19C21 20.1046 20.1046 21 19 21H12H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H10"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <div className="hover:underline text-secondary font-medium">
+              View on GitHub
+            </div>
           </a>
         </div>
         <div className="flex flex-1">{description}</div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap overflow-hidden max-h-14 gap-x-3 gap-y-1">
           {features.map((feature) => {
             return <Chip text={feature} />;
           })}
@@ -59,30 +81,42 @@ export const Portfolio = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-primary">
-        {/* <div className="text-2xl text-center">what I've been working on</div> */}
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(420px,1fr))] pt-10 px-15 gap-15">
+      <div className="min-h-screen bg-primary px-10 flex flex-col">
+        <div className="mx-auto pt-12 pb-8 font-thin leading-relaxed max-w-3xl text-slate-950">
+          A selection of React Native apps I’ve built, focusing on clean UI,
+          maintainable architecture, and real-world use cases.
+        </div>
+        <div className="grid flex-col sm:grid-cols-[repeat(auto-fit,minmax(440px,1fr))] pt-6 pb-10 gap-10">
           <ProjectCard
             name={"Real Estate"}
-            description="Minimal real estate discovery app built with React Native"
-            features={["RN", "Google Auth", "Appwrite", "Tailwind CSS"]}
+            description="Search for real estate in this minimal cross-platform app"
+            features={["React Native", "Google Auth", "Appwrite", "Tailwind"]}
             link="https://github.com/jrflynn3/real-estate"
-            src="src/Assets/Other/real-estate-app.png"
+            src="src/Assets/Images/real-estate-app.png"
           />
           <ProjectCard
-            name={"Movie DB Search"}
-            description="Search trending movies from the Movie Database"
-            features={["RN", "3rd Party API", "Appwrite", "Tailwind CSS"]}
-            link=""
-            src="src/Assets/Other/movie-app.png"
+            name={"Movie Discovery"}
+            description="Discover new and trending movies from the Movie Database"
+            features={["React Native", "3rd Party API", "Appwrite", "Tailwind"]}
+            link="https://github.com/jrflynn3/movies"
+            src="src/Assets/Images/movie-app.png"
           />
           <ProjectCard
-            name={"Project Name"}
-            description=""
-            features={["temp"]}
-            link=""
-            src=""
+            name={"Food Ordering"}
+            description="Order your favorite entrees in this simple food ordering app"
+            features={["React Native", "Appwrite", "Tailwind"]}
+            link="https://github.com/jrflynn3/fast-food"
+            src="src/Assets/Images/fast-food.png"
           />
+        </div>
+
+        <div className="py-8 self-center">
+          <a
+            className="flex flex-1 font-medium text-md text-secondary"
+            href="https://github.com/jrflynn3"
+          >
+            <GhostButton text="View more projects on GitHub" />
+          </a>
         </div>
       </div>
       <Footer />
