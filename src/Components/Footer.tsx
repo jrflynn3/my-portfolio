@@ -8,7 +8,7 @@ export const Footer = () => {
       </div>
 
       <NavLink
-        className="text-[1.1em] text-primary tracking-[2px]"
+        className="text-[1.1em] text-primary tracking-[2px] hover:underline hover:font-bold"
         to="mailto:hello@john-flynn.co"
       >
         Contact Me
