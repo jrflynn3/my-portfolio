@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { NavBar } from "./NavBar";
-import logo from "../Assets/Other/JF-logo-orange-gray.png";
+import logo from "../Assets/Images/JF-logo-orange-gray.png";
 import { useState } from "react";
 
 const HomeIcon = () => (
