@@ -6,7 +6,7 @@ export const About = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center pt-20 min-h-screen bg-primary">
+      <div className="flex flex-col items-center pt-10 min-h-screen bg-primary">
         <div className="flex flex-col md:flex-row items-center max-w-[650px] px-4 md:px-0">
           <div>
             <img
@@ -18,21 +18,32 @@ export const About = () => {
           <div className="flex flex-col justify-center md:pl-3 mt-4 md:mt-0 text-center md:text-left">
             <div className="font-extrabold text-4xl">John Flynn</div>
             <div className="text-lg">Lead Software Developer</div>
-            <div className="font-thin">React / React Native</div>
+            <div className="font-thin">React · React Native</div>
           </div>
         </div>
 
         <div className="max-w-[650px] text-base sm:text-lg md:text-xl font-extralight px-4 sm:px-6 md:px-0 py-6 sm:py-8 md:py-10">
-          I’m a lead software developer focused on building user-friendly
-          applications with React and React Native. I enjoy mentoring other
-          developers and working closely with teams to build clean, maintainable
-          software. When I’m not coding, I’m spending time with my wife and
-          three kids, following college football, playing ultimate frisbee, or
-          getting lost in a good science fiction story. I'm always open to
-          connecting and networking.
+          <p className="pb-5">
+            I’m a lead software developer focused on building user-friendly,
+            maintainable applications with React and React Native. I care deeply
+            about clean architecture, long-term maintainability, and clear
+            communication within teams.
+          </p>
+          <p className="pb-5">
+            I enjoy mentoring other developers and working closely with product
+            and engineering partners to ship reliable, well-designed software.
+            I’m always willing to step in where needed to help unblock my team
+            and keep projects moving forward.
+          </p>
+          <p>
+            When I’m not coding, I’m spending time with my wife and three kids,
+            following college football, playing ultimate frisbee, or getting
+            lost in a good science fiction story. I'm always open to connecting
+            and networking.
+          </p>
         </div>
         <hr className="w-full max-w-[400px] my-6 md:my-10 border-t border-secondary" />
-        <div className="font-thin pt-5 text-sm md:text-base">reach me here</div>
+        <div className="font-thin pt-5 text-sm md:text-base">Find me here</div>
         <div className="flex items-center justify-center gap-6 md:gap-10 py-5">
           <a href="https://www.linkedin.com/in/john-flynn-890412154/">
             <svg
