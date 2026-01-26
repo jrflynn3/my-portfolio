@@ -4,8 +4,8 @@ const Link = ({ path, text }: { path: string; text: string }) => (
   <NavLink
     to={path}
     className={({ isActive }) =>
-      `px-[1em] transition-all delay-100 hover:font-black hover:text-shadow-lg/30 focus:underline focus:font-black${
-        isActive ? " font-black underline" : ""
+      `px-[1em] transition-all delay-100 hover:text-shadow-lg/30 focus:underline focus:text-secondary ${
+        isActive ? "text-[#0C8A91] font-black text-shadow-lg/30 underline" : ""
       }`
     }
   >
