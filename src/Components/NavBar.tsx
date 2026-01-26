@@ -4,7 +4,7 @@ const Link = ({ path, text }: { path: string; text: string }) => (
   <NavLink
     to={path}
     className={({ isActive }) =>
-      `px-[1em] transition-all delay-100 hover:text-shadow-lg/30 focus:underline focus:text-secondary ${
+      `px-[1em] transition-all delay-75 hover:text-shadow-lg/40 focus:underline focus:text-secondary hover:-translate-y-0.5 ${
         isActive ? "text-[#0C8A91] font-black text-shadow-lg/30 underline" : ""
       }`
     }
@@ -20,8 +20,13 @@ export const NavBar = ({ vertical }: { vertical: boolean }) => {
   return (
     <nav className={vertical ? verticalStyles : horizontalStyles}>
       <Link path="/portfolio" text="Portfolio" />
-      <Link path="/contact" text="Contact" />
       <Link path="/about" text="About" />
+      <a
+        className="px-[1em] transition-all delay-75 hover:text-shadow-lg/40 hover:-translate-y-0.5 active:text-[#0C8A91]"
+        href="mailto:hello@john-flynn.co"
+      >
+        Email
+      </a>
     </nav>
   );
 };
