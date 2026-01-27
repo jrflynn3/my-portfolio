@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Footer } from "./Footer";
 import GhostButton from "./GhostButton";
 import { Header } from "./Header";
@@ -23,7 +24,9 @@ export const Home = () => {
         teams and solving real-world problems.
       </div>
       <div className="pb-30">
-        <GhostButton text="Read more" />
+        <Link to="/About">
+          <GhostButton text="Read more" />
+        </Link>
       </div>
       <Footer />
     </div>
