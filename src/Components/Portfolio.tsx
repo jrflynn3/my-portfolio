@@ -1,5 +1,8 @@
 import { Footer } from "./Footer";
 import GhostButton from "./GhostButton";
+import movieImage from "../Assets/Images/movie-app.png";
+import realEstateImage from "../Assets/Images/real-estate-app.png";
+import fastFoodImage from "../Assets/Images/fast-food.png";
 import { Header } from "./Header";
 
 type ProjectCardProps = {
@@ -92,21 +95,21 @@ export const Portfolio = () => {
             description="Search for real estate in this minimal cross-platform app"
             features={["React Native", "Google Auth", "Appwrite", "Tailwind"]}
             link="https://github.com/jrflynn3/real-estate"
-            src="src/Assets/Images/real-estate-app.png"
+            src={realEstateImage}
           />
           <ProjectCard
             name={"Movie Discovery"}
             description="Discover new and trending movies from the Movie Database"
             features={["React Native", "3rd Party API", "Appwrite", "Tailwind"]}
             link="https://github.com/jrflynn3/movies"
-            src="src/Assets/Images/movie-app.png"
+            src={movieImage}
           />
           <ProjectCard
             name={"Food Ordering"}
             description="Order your favorite entrees in this simple food ordering app"
             features={["React Native", "Appwrite", "Tailwind"]}
             link="https://github.com/jrflynn3/fast-food"
-            src="src/Assets/Images/fast-food.png"
+            src={fastFoodImage}
           />
         </div>
 
