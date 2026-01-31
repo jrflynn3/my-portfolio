@@ -12,7 +12,7 @@ export const Home = () => {
       <Header />
       <div className="flex flex-col flex-1 pt-40 md:pt-80 text-center">
         <div>
-          <h1 className="text-6xl">John Flynn</h1>
+          <h1 className="text-5xl sm:text-6xl">John Flynn</h1>
           <div className="pt-3 text-2xl font-thin">
             <em>SOFTWARE DEVELOPER SPECIALIZING IN REACT/REACT NATIVE</em>
           </div>
