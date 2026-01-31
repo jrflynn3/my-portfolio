@@ -18,7 +18,7 @@ const MenuButton = ({
 }) => {
   return (
     <button
-      className="self-start bg-[#FF5D04] p-1 rounded-md"
+      className="self-start bg-quaternary p-1 rounded-md"
       type="button"
       aria-label="Toggle menu"
       aria-controls="mobile-menu"
