@@ -29,50 +29,48 @@ const ProjectCard = ({
   src,
 }: ProjectCardProps) => {
   return (
-    <div className="flex flex-col min-w-[440px] max-w-[550px] max-h-[700px] items-center justify-center bg-white rounded-t-3xl rounded-b-md overflow-hidden shadow-lg/20 hover:shadow-xl/20 transition-all delay-100">
-      <div className="h-[500px] w-full flex justify-center items-start">
+    <div className="flex flex-col min-w-[320px] max-w-[550px] max-h-[700px] items-center justify-center bg-white rounded-t-3xl rounded-b-md overflow-hidden shadow-lg/20 hover:shadow-xl/40 transition-all delay-100">
+      <div className="h-[300px] w-full flex justify-center items-start">
         <img src={src} alt={`${name} preview`} />
       </div>
       <div className="flex flex-col w-full min-h-[170px] bg-[#f2f5f5] px-5 py-3">
-        <div className="flex justify-between">
-          <h1 className="font-bold text-2xl">{name}</h1>
-          <a className="flex justify-center items-center pb-2" href={link}>
-            <svg
-              className="h-4 w-auto pr-1 text-secondary"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M13.5 10.5L21 3"
-                stroke="currentColor"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M16 3L21 3L21 8"
-                stroke="currentColor"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M21 14V19C21 20.1046 20.1046 21 19 21H12H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H10"
-                stroke="currentColor"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <div className="hover:underline text-secondary font-medium">
-              View on GitHub
-            </div>
-          </a>
-        </div>
-        <div className="flex flex-1">{description}</div>
+        <h1 className="font-bold text-lg md:text-2xl">{name}</h1>
+        <div className="flex flex-1 text-md md:text-base">{description}</div>
+        <a className="flex items-center pt-2 pb-3" href={link}>
+          <svg
+            className="h-4 w-auto pr-1 text-quaternary"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M13.5 10.5L21 3"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M16 3L21 3L21 8"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M21 14V19C21 20.1046 20.1046 21 19 21H12H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H10"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <div className="text-md md:text-base hover:underline text-quaternary font-medium">
+            View on GitHub
+          </div>
+        </a>
         <div className="flex flex-wrap overflow-hidden max-h-14 gap-x-3 gap-y-1">
           {features.map((feature) => {
-            return <Chip text={feature} />;
+            return <Chip key={feature} text={feature} />;
           })}
         </div>
       </div>
@@ -84,7 +82,7 @@ export const Portfolio = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-primary px-10 flex flex-col">
+      <div className="min-h-screen bg-primary flex flex-col px-5 md:px-10">
         <div className="mx-auto pt-12 pb-8 font-thin leading-relaxed max-w-3xl text-slate-950">
           A selection of React Native apps I’ve built, focusing on clean UI,
           maintainable architecture, and real-world use cases.
