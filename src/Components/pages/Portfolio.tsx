@@ -1,6 +1,7 @@
 import { ExternalLink, GhostButton } from "../common";
 import { GITHUB_URL } from "../../constants";
 import { projects } from "../../Data/projects";
+import { PageHead } from "../common/PageHead";
 
 type ProjectCardProps = {
   features: string[];
@@ -78,6 +79,10 @@ const ProjectCard = ({
 export const Portfolio = () => {
   return (
     <>
+      <PageHead
+        title="Portfolio | John Flynn"
+        description="Some recent projects I've been working on"
+      />
       <div className="min-h-screen bg-primary flex flex-col px-5 md:px-10">
         <div className="mx-auto pt-12 pb-8 font-thin leading-relaxed max-w-3xl text-slate-950">
           A selection of React Native apps I’ve built, focusing on clean UI,

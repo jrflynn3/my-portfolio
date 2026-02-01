@@ -1,9 +1,11 @@
 import profilePic from "../../Assets/Images/profilepic.jpeg";
 import { IconBar } from "../common";
+import { PageHead } from "../common/PageHead";
 
 export const About = () => {
   return (
     <>
+      <PageHead title="About | John Flynn" description="Learn more about me" />
       <div className="flex flex-col items-center pt-10 min-h-screen bg-primary">
         <div className="flex flex-col md:flex-row items-center max-w-[650px] px-4 md:px-0">
           <div>
