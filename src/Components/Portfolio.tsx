@@ -4,6 +4,7 @@ import movieImage from "../Assets/Images/movie-app.png";
 import realEstateImage from "../Assets/Images/real-estate-app.png";
 import fastFoodImage from "../Assets/Images/fast-food.png";
 import { Header } from "./Header";
+import { GITHUB_URL } from "../constants";
 
 type ProjectCardProps = {
   features: string[];
@@ -114,7 +115,7 @@ export const Portfolio = () => {
         <div className="py-8 self-center">
           <a
             className="flex flex-1 font-medium text-md text-secondary"
-            href="https://github.com/jrflynn3"
+            href={GITHUB_URL}
           >
             <GhostButton text="View more projects on GitHub" />
           </a>

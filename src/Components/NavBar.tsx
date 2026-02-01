@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { EMAIL } from "../constants";
 
 const Link = ({ path, text }: { path: string; text: string }) => (
   <NavLink
@@ -23,7 +24,7 @@ export const NavBar = ({ vertical }: { vertical: boolean }) => {
       <Link path="/about" text="About" />
       <a
         className="px-[1em] transition-all delay-75 hover:text-shadow-lg/40 hover:-translate-y-0.5 active:text-[#0C8A91]"
-        href="mailto:hello@john-flynn.co"
+        href={EMAIL}
       >
         Email
       </a>
