@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { EMAIL } from "../constants";
+import ExternalLink from "./ExternalLink";
 
 const Link = ({ path, text }: { path: string; text: string }) => (
   <NavLink
@@ -22,12 +23,12 @@ export const NavBar = ({ vertical }: { vertical: boolean }) => {
     <nav className={vertical ? verticalStyles : horizontalStyles}>
       <Link path="/portfolio" text="Portfolio" />
       <Link path="/about" text="About" />
-      <a
-        className="px-[1em] transition-all delay-75 hover:text-shadow-lg/40 hover:-translate-y-0.5 active:text-[#0C8A91]"
+      <ExternalLink
         href={EMAIL}
+        className="px-[1em] transition-all delay-75 hover:text-shadow-lg/40 hover:-translate-y-0.5 active:text-[#0C8A91]"
       >
         Email
-      </a>
+      </ExternalLink>
     </nav>
   );
 };
