@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { EMAIL } from "../constants";
+import { EMAIL } from "../../constants";
 import ExternalLink from "./ExternalLink";
 
 const Link = ({ path, text }: { path: string; text: string }) => (

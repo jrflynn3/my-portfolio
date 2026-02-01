@@ -1,8 +1,8 @@
-import GhostButton from "./GhostButton";
-import movieImage from "../Assets/Images/movie-app.png";
-import realEstateImage from "../Assets/Images/real-estate-app.png";
-import fastFoodImage from "../Assets/Images/fast-food.png";
-import { GITHUB_URL } from "../constants";
+import GhostButton from "../common/GhostButton";
+import movieImage from "../../Assets/Images/movie-app.png";
+import realEstateImage from "../../Assets/Images/real-estate-app.png";
+import fastFoodImage from "../../Assets/Images/fast-food.png";
+import { GITHUB_URL } from "../../constants";
 
 type ProjectCardProps = {
   features: string[];

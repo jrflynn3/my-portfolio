@@ -1,4 +1,4 @@
-import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../constants";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../../constants";
 import ExternalLink from "./ExternalLink";
 
 const IconBar = ({ hoverColor }: { hoverColor: string }) => {

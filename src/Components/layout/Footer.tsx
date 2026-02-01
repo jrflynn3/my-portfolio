@@ -1,6 +1,6 @@
-import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../constants";
-import ExternalLink from "./ExternalLink";
-import IconBar from "./IconBar";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../../constants";
+import ExternalLink from "../common/ExternalLink";
+import IconBar from "../common/IconBar";
 
 export const Footer = () => {
   const linkStyles =
