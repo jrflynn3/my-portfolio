@@ -6,7 +6,7 @@ type ExternalLinkProps = {
   className?: string;
 };
 
-const ExternalLink = ({
+export const ExternalLink = ({
   href,
   children,
   className = "",
@@ -22,5 +22,3 @@ const ExternalLink = ({
     </a>
   );
 };
-
-export default ExternalLink;

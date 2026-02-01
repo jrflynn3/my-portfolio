@@ -6,7 +6,7 @@ type LayoutProps = {
   className?: string;
 };
 
-const Layout = ({ className = "" }: LayoutProps) => {
+export const Layout = ({ className = "" }: LayoutProps) => {
   return (
     <div className={className}>
       <Header />
@@ -15,5 +15,3 @@ const Layout = ({ className = "" }: LayoutProps) => {
     </div>
   );
 };
-
-export default Layout;

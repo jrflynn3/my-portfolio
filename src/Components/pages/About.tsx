@@ -1,5 +1,5 @@
 import profilePic from "../../Assets/Images/profilepic.jpeg";
-import IconBar from "../common/IconBar";
+import { IconBar } from "../common";
 
 export const About = () => {
   return (

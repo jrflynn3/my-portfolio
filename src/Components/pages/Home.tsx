@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import GhostButton from "../common/GhostButton";
+import { GhostButton } from "../common";
 
 export const Home = () => {
   return (

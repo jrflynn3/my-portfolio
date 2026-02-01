@@ -1,7 +1,7 @@
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../../constants";
-import ExternalLink from "./ExternalLink";
+import { ExternalLink } from "./ExternalLink";
 
-const IconBar = ({ hoverColor }: { hoverColor: string }) => {
+export const IconBar = ({ hoverColor }: { hoverColor: string }) => {
   const linkStyle = `h-10 w-10 transition delay-100 hover:${hoverColor} active:${hoverColor}`;
   return (
     <div className="flex items-center justify-center gap-6 md:gap-10 py-5">
@@ -33,5 +33,3 @@ const IconBar = ({ hoverColor }: { hoverColor: string }) => {
     </div>
   );
 };
-
-export default IconBar;

@@ -1,7 +1,6 @@
-import GhostButton from "../common/GhostButton";
+import { ExternalLink, GhostButton } from "../common";
 import { GITHUB_URL } from "../../constants";
 import { projects } from "../../Data/projects";
-import ExternalLink from "../common/ExternalLink";
 
 type ProjectCardProps = {
   features: string[];
