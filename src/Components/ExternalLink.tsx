@@ -6,7 +6,11 @@ type ExternalLinkProps = {
   className?: string;
 };
 
-const ExternalLink = ({ href, children, className }: ExternalLinkProps) => {
+const ExternalLink = ({
+  href,
+  children,
+  className = "",
+}: ExternalLinkProps) => {
   return (
     <a
       className={className}

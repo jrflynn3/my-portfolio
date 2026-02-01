@@ -1,12 +1,9 @@
-import { Footer } from "./Footer";
-import { Header } from "./Header";
 import profilePic from "../Assets/Images/profilepic.jpeg";
 import IconBar from "./IconBar";
 
 export const About = () => {
   return (
     <>
-      <Header />
       <div className="flex flex-col items-center pt-10 min-h-screen bg-primary">
         <div className="flex flex-col md:flex-row items-center max-w-[650px] px-4 md:px-0">
           <div>
@@ -51,7 +48,6 @@ export const About = () => {
           <IconBar hoverColor={"text-secondary"} />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

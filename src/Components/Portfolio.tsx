@@ -1,9 +1,7 @@
-import { Footer } from "./Footer";
 import GhostButton from "./GhostButton";
 import movieImage from "../Assets/Images/movie-app.png";
 import realEstateImage from "../Assets/Images/real-estate-app.png";
 import fastFoodImage from "../Assets/Images/fast-food.png";
-import { Header } from "./Header";
 import { GITHUB_URL } from "../constants";
 
 type ProjectCardProps = {
@@ -82,7 +80,6 @@ const ProjectCard = ({
 export const Portfolio = () => {
   return (
     <>
-      <Header />
       <div className="min-h-screen bg-primary flex flex-col px-5 md:px-10">
         <div className="mx-auto pt-12 pb-8 font-thin leading-relaxed max-w-3xl text-slate-950">
           A selection of React Native apps I’ve built, focusing on clean UI,
@@ -121,7 +118,6 @@ export const Portfolio = () => {
           </a>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

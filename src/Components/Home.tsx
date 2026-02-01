@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
-import { Footer } from "./Footer";
 import GhostButton from "./GhostButton";
-import { Header } from "./Header";
 
 export const Home = () => {
   return (
     <div
       className={`flex flex-col items-center bg-cover bg-[position:70%_bottom]
-         md:bg-cover md:bg-top bg-no-repeat min-h-[200vh] sm:min-h-[165vh] bg-[url(Assets/Images/mountains-bg.jpg)] bg-primary`}
+         md:bg-cover md:bg-top bg-no-repeat min-h-[200vh] sm:min-h-[150vh] bg-[url(Assets/Images/mountains-bg.jpg)] bg-primary`}
     >
-      <Header />
       <div className="flex flex-col flex-1 pt-40 md:pt-80 text-center">
         <div>
           <h1 className="text-5xl sm:text-6xl">John Flynn</h1>
@@ -29,7 +26,6 @@ export const Home = () => {
         </Link>
       </div>
       <div className="pb-50"></div>
-      <Footer />
     </div>
   );
 };
