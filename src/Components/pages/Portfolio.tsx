@@ -1,8 +1,6 @@
 import GhostButton from "../common/GhostButton";
-import movieImage from "../../Assets/Images/movie-app.png";
-import realEstateImage from "../../Assets/Images/real-estate-app.png";
-import fastFoodImage from "../../Assets/Images/fast-food.png";
 import { GITHUB_URL } from "../../constants";
+import { projects } from "../../Data/projects";
 
 type ProjectCardProps = {
   features: string[];
@@ -86,27 +84,9 @@ export const Portfolio = () => {
           maintainable architecture, and real-world use cases.
         </div>
         <div className="grid flex-col sm:grid-cols-[repeat(auto-fit,minmax(440px,1fr))] pt-6 pb-10 gap-10">
-          <ProjectCard
-            name={"Real Estate"}
-            description="Search for real estate in this minimal cross-platform app"
-            features={["React Native", "Google Auth", "Appwrite", "Tailwind"]}
-            link="https://github.com/jrflynn3/real-estate"
-            src={realEstateImage}
-          />
-          <ProjectCard
-            name={"Movie Discovery"}
-            description="Discover new and trending movies from the Movie Database"
-            features={["React Native", "3rd Party API", "Appwrite", "Tailwind"]}
-            link="https://github.com/jrflynn3/movies"
-            src={movieImage}
-          />
-          <ProjectCard
-            name={"Food Ordering"}
-            description="Order your favorite entrees in this simple food ordering app"
-            features={["React Native", "Appwrite", "Tailwind"]}
-            link="https://github.com/jrflynn3/fast-food"
-            src={fastFoodImage}
-          />
+          {projects.map((project) => (
+            <ProjectCard key={project.name} {...project} />
+          ))}
         </div>
 
         <div className="py-8 self-center">
