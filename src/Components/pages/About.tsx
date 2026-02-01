@@ -11,7 +11,6 @@ export const About = () => {
               src={profilePic}
               className="h-32 w-32 sm:h-40 sm:w-40 md:h-[250px] md:w-[250px] object-cover object-top rounded-full"
               alt="professional headshot"
-              loading="lazy"
             />
           </div>
           <div className="flex flex-col justify-center md:pl-3 mt-4 md:mt-0 text-center md:text-left">
