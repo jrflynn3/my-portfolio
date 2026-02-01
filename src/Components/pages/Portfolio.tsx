@@ -1,6 +1,7 @@
 import GhostButton from "../common/GhostButton";
 import { GITHUB_URL } from "../../constants";
 import { projects } from "../../Data/projects";
+import ExternalLink from "../common/ExternalLink";
 
 type ProjectCardProps = {
   features: string[];
@@ -33,7 +34,7 @@ const ProjectCard = ({
       <div className="flex flex-col w-full min-h-[170px] bg-[#f2f5f5] px-5 py-3">
         <h1 className="font-bold text-lg md:text-2xl">{name}</h1>
         <div className="flex flex-1 text-md md:text-base">{description}</div>
-        <a className="flex items-center pt-2 pb-3" href={link}>
+        <ExternalLink href={link} className="flex items-center pt-2 pb-3">
           <svg
             className="h-4 w-auto pr-1 text-quaternary"
             viewBox="0 0 24 24"
@@ -64,7 +65,7 @@ const ProjectCard = ({
           <div className="text-md md:text-base hover:underline text-quaternary font-medium">
             View on GitHub
           </div>
-        </a>
+        </ExternalLink>
         <div className="flex flex-wrap overflow-hidden max-h-14 gap-x-3 gap-y-1">
           {features.map((feature) => {
             return <Chip key={feature} text={feature} />;
@@ -90,12 +91,12 @@ export const Portfolio = () => {
         </div>
 
         <div className="py-8 self-center">
-          <a
-            className="flex flex-1 font-medium text-md text-secondary"
+          <ExternalLink
             href={GITHUB_URL}
+            className="flex flex-1 font-medium text-md text-secondary"
           >
             <GhostButton text="View more projects on GitHub" />
-          </a>
+          </ExternalLink>
         </div>
       </div>
     </>
