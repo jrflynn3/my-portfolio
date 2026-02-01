@@ -2,13 +2,9 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { Outlet } from "react-router";
 
-type LayoutProps = {
-  className?: string;
-};
-
-export const Layout = ({ className = "" }: LayoutProps) => {
+export const Layout = () => {
   return (
-    <div className={className}>
+    <div>
       <Header />
       <Outlet />
       <Footer />
