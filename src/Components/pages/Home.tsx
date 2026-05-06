@@ -11,7 +11,7 @@ export const Home = () => {
       />
       <div
         className={`flex flex-col items-center bg-cover bg-[position:70%_bottom]
-         md:bg-cover md:bg-top bg-no-repeat min-h-[200vh] sm:min-h-[150vh] bg-[url(Assets/Images/mountains-bg.jpg)] bg-primary`}
+         md:bg-cover md:bg-top bg-no-repeat min-h-[200vh] sm:min-h-[150vh] bg-[url(/images/mountains-bg.jpg)] bg-primary`}
       >
         <div className="flex flex-col flex-1 pt-40 md:pt-80 text-center">
           <div>
