@@ -8,8 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
 *.local
 
 # Editor directories and files
@@ -32,3 +30,9 @@ firebase*
 .history*
 
 claude.md
+
+#Next
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
