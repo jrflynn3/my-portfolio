@@ -82,7 +82,7 @@ const ProjectCard = ({
   );
 };
 
-export const Portfolio = () => {
+export default function Portfolio() {
   return (
     <>
       <div className="min-h-screen bg-primary flex flex-col px-5 md:px-10">
@@ -107,4 +107,4 @@ export const Portfolio = () => {
       </div>
     </>
   );
-};
+}
