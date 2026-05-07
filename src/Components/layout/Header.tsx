@@ -1,12 +1,15 @@
-import { NavLink } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { NavBar } from "../common/NavBar";
 import logo from "../../Assets/Images/JF-logo-orange-gray.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const HomeIcon = () => (
-  <NavLink to="/">
-    <img className="h-10 w-auto pl-2.5" src={logo} alt="Home"></img>
-  </NavLink>
+  <Link href="/">
+    <Image className="h-10 w-auto pl-2.5" src={logo} alt="Home"></Image>
+  </Link>
 );
 
 const MenuButton = ({
@@ -47,6 +50,20 @@ export const Header = () => {
   const setMenuState = () => {
     setMenuOpen((val) => !val);
   };
+
+  useEffect(() => {
+    let prevScrollPos = window.scrollY;
+    const onScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const header = document.getElementById("page-header");
+      if (header) {
+        header.style.top = prevScrollPos > currentScrollPos ? "0" : "-90px";
+      }
+      prevScrollPos = currentScrollPos;
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div

@@ -1,19 +1,25 @@
-import { NavLink } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { EMAIL } from "../../constants";
 import { ExternalLink } from "./ExternalLink";
+import { usePathname } from "next/navigation";
 
-const Link = ({ path, text }: { path: string; text: string }) => (
-  <NavLink
-    to={path}
-    className={({ isActive }) =>
-      `px-[1em] transition-all delay-75 hover:text-shadow-lg/40 focus:underline focus:text-secondary hover:-translate-y-0.5 ${
+const NavLink = ({ path, text }: { path: string; text: string }) => {
+  const pathname = usePathname();
+  const isActive = path === pathname;
+
+  return (
+    <Link
+      href={path}
+      className={`px-[1em] transition-all delay-75 hover:text-shadow-lg/40 focus:underline focus:text-secondary hover:-translate-y-0.5 ${
         isActive ? "text-[#0C8A91] font-black text-shadow-lg/30 underline" : ""
-      }`
-    }
-  >
-    {text}
-  </NavLink>
-);
+      }`}
+    >
+      {text}
+    </Link>
+  );
+};
 
 export const NavBar = ({ vertical }: { vertical: boolean }) => {
   const verticalStyles = "flex flex-col text-[1.50em] gap-5 text-primary";
@@ -21,8 +27,8 @@ export const NavBar = ({ vertical }: { vertical: boolean }) => {
     "flex justify-between text-primary tracking-[2px] text-[1.2em] text-center m-auto";
   return (
     <nav className={vertical ? verticalStyles : horizontalStyles}>
-      <Link path="/portfolio" text="Portfolio" />
-      <Link path="/about" text="About" />
+      <NavLink path="/portfolio" text="Portfolio" />
+      <NavLink path="/about" text="About" />
       <ExternalLink
         href={EMAIL}
         className="px-[1em] transition-all delay-75 hover:text-shadow-lg/40 hover:-translate-y-0.5 active:text-[#0C8A91]"
