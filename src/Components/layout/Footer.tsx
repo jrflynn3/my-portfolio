@@ -14,7 +14,7 @@ export const Footer = () => {
       <div className="text-[1.1em] tracking-[2px]">© 2026 John Flynn</div>
       <div className="hidden md:flex gap-x-4">
         <ExternalLink href={EMAIL} className={linkStyles}>
-          Let's connect
+          Let&apos;s connect
         </ExternalLink>
         ·
         <ExternalLink href={LINKEDIN_URL} className={linkStyles}>
