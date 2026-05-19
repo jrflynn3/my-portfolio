@@ -29,22 +29,22 @@ export default function About() {
 
         <div className="max-w-[650px] text-base sm:text-lg md:text-xl font-extralight px-4 sm:px-6 md:px-0 py-6 sm:py-8 md:py-10">
           <p className="pb-5">
-            I’m a lead software developer focused on building user-friendly,
-            maintainable applications with React and React Native. I care deeply
-            about clean architecture, long-term maintainability, and clear
-            communication within teams.
+            I&apos;m a lead software developer focused on building
+            user-friendly, maintainable applications with React and React
+            Native. I care deeply about clean architecture, long-term
+            maintainability, and clear communication within teams.
           </p>
           <p className="pb-5">
             I enjoy mentoring other developers and working closely with product
             and engineering partners to ship reliable, well-designed software.
-            I’m always willing to step in where needed to help unblock my team
-            and keep projects moving forward.
+            I&apos;m always willing to step in where needed to help unblock my
+            team and keep projects moving forward.
           </p>
           <p>
-            When I’m not coding, I’m spending time with my wife and three kids,
-            following college football, playing ultimate frisbee, or getting
-            lost in a good science fiction story. I'm always open to connecting
-            and networking.
+            When I&apos;m not coding, I&apos;m spending time with my wife and
+            three kids, following college football, playing ultimate frisbee, or
+            getting lost in a good science fiction story. I'm always open to
+            connecting and networking.
           </p>
         </div>
         <div className="hidden md:flex flex-col w-full items-center">
