@@ -9,6 +9,7 @@ export const projects = [
     features: ["React Native", "Google Auth", "Appwrite", "Tailwind"],
     link: "https://github.com/jrflynn3/real-estate",
     src: realEstateImage,
+    slug: "real-estate",
   },
   {
     name: "Movie Discovery",
@@ -16,6 +17,7 @@ export const projects = [
     features: ["React Native", "3rd Party API", "Appwrite", "Tailwind"],
     link: "https://github.com/jrflynn3/movies",
     src: movieImage,
+    slug: "movie-discovery",
   },
   {
     name: "Food Ordering",
@@ -23,5 +25,6 @@ export const projects = [
     features: ["React Native", "Appwrite", "Tailwind"],
     link: "https://github.com/jrflynn3/fast-food",
     src: fastFoodImage,
+    slug: "food-ordering",
   },
 ];

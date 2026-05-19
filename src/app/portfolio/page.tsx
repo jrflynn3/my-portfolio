@@ -3,6 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import { GITHUB_URL } from "@/constants";
 import { projects } from "@/Data/projects";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Portfolio | John Flynn",
@@ -15,6 +16,7 @@ type ProjectCardProps = {
   description: string;
   link: string;
   src: StaticImageData;
+  slug: string;
 };
 
 const Chip = ({ text }: { text: string }) => {
@@ -31,54 +33,25 @@ const ProjectCard = ({
   description,
   link,
   src,
+  slug,
 }: ProjectCardProps) => {
   return (
-    <div className="flex flex-col min-w-[320px] max-w-[550px] max-h-[700px] items-center justify-center bg-white rounded-t-3xl rounded-b-md overflow-hidden shadow-lg/20 hover:shadow-xl/40 transition-all delay-100">
-      <div className="h-[300px] sm:h-[500px] w-full flex justify-center items-start">
-        <Image src={src} alt={`${name} preview`} loading="lazy" />
-      </div>
-      <div className="flex flex-col w-full min-h-[170px] bg-[#f2f5f5] px-5 py-3">
-        <h1 className="font-bold text-lg md:text-2xl">{name}</h1>
-        <div className="flex flex-1 text-md md:text-base">{description}</div>
-        <ExternalLink href={link} className="flex items-center pt-2 pb-3">
-          <svg
-            className="h-4 w-auto pr-1 text-quaternary"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M13.5 10.5L21 3"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M16 3L21 3L21 8"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M21 14V19C21 20.1046 20.1046 21 19 21H12H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H10"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <div className="text-md md:text-base hover:underline text-quaternary font-medium">
-            View on GitHub
+    <Link href={`/portfolio/${slug}`}>
+      <div className="flex flex-col min-w-[320px] max-w-[550px] max-h-[700px] items-center justify-center bg-white rounded-t-3xl rounded-b-md overflow-hidden shadow-lg/20 hover:shadow-xl/40 transition-all delay-100">
+        <div className="h-[300px] sm:h-[500px] w-full flex justify-center items-start">
+          <Image src={src} alt={`${name} preview`} loading="lazy" />
+        </div>
+        <div className="flex flex-col w-full min-h-[170px] bg-[#f2f5f5] px-5 py-3">
+          <h1 className="font-bold text-lg md:text-2xl">{name}</h1>
+          <div className="flex flex-1 text-md md:text-base">{description}</div>
+          <div className="flex flex-wrap overflow-hidden max-h-14 gap-x-3 gap-y-1">
+            {features.map((feature) => {
+              return <Chip key={feature} text={feature} />;
+            })}
           </div>
-        </ExternalLink>
-        <div className="flex flex-wrap overflow-hidden max-h-14 gap-x-3 gap-y-1">
-          {features.map((feature) => {
-            return <Chip key={feature} text={feature} />;
-          })}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
