@@ -2,6 +2,7 @@ import { projects } from "@/Data/projects";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { ExternalLink } from "@/Components/common";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -11,6 +12,20 @@ export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((project) => project.slug === slug);
+
+  if (!project) {
+    return { title: "Project Not Found | John Flynn" };
+  }
+
+  return {
+    title: `${project.name} | John Flynn`,
+    description: project.description,
+  };
 }
 
 export default async function ProjectPage({ params }: Props) {
