@@ -43,8 +43,8 @@ export default function About() {
           <p>
             When I&apos;m not coding, I&apos;m spending time with my wife and
             three kids, following college football, playing ultimate frisbee, or
-            getting lost in a good science fiction story. I'm always open to
-            connecting and networking.
+            getting lost in a good science fiction story. I&apos;m always open
+            to connecting and networking.
           </p>
         </div>
         <div className="hidden md:flex flex-col w-full items-center">
