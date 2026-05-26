@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sendContactEmail } from "./actions";
 
 export const metadata: Metadata = {
   title: "Contact | John Flynn",
@@ -12,7 +13,7 @@ export default function Contact() {
         <h1>Contact</h1>
         <p>Have a question or want to work together? Send me a message.</p>
 
-        <form>
+        <form action={sendContactEmail}>
           <div>
             <label htmlFor="name">Name</label>
             <input id="name" name="name" type="text" required />
