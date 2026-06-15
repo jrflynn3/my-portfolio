@@ -29,12 +29,7 @@ export const NavBar = ({ vertical }: { vertical: boolean }) => {
     <nav className={vertical ? verticalStyles : horizontalStyles}>
       <NavLink path="/portfolio" text="Portfolio" />
       <NavLink path="/about" text="About" />
-      <ExternalLink
-        href={EMAIL}
-        className="px-[1em] transition-all delay-75 hover:text-shadow-lg/40 hover:-translate-y-0.5 active:text-[#0C8A91]"
-      >
-        Email
-      </ExternalLink>
+      <NavLink path="/contact" text="Contact" />
     </nav>
   );
 };
