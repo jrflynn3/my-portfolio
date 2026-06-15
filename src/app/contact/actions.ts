@@ -15,9 +15,9 @@ export async function sendContactEmail(
     return { status: "error", message: "Please fill in all fields." };
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
-
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     await resend.emails.send({
       from: process.env.RESEND_CONTACT_EMAIL!,
       to: process.env.RESEND_EMAIL!,
