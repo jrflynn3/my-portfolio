@@ -39,6 +39,8 @@ export function ContactForm() {
           required
           className={`${fieldClass} ${nameError ? errorFieldClass : ""}`}
           defaultValue={state.values?.name ?? ""}
+          aria-invalid={!!nameError}
+          aria-describedby={nameError ? "name-error" : undefined}
         />
         {nameError && (
           <p id="name-error" className="text-quaternary text-sm">
@@ -58,6 +60,8 @@ export function ContactForm() {
           required
           className={`${fieldClass} ${emailError ? errorFieldClass : ""}`}
           defaultValue={state.values?.email ?? ""}
+          aria-invalid={!!emailError}
+          aria-describedby={emailError ? "email-error" : undefined}
         />
         {emailError && (
           <p id="email-error" className="text-quaternary text-sm">
@@ -77,6 +81,8 @@ export function ContactForm() {
           rows={6}
           className={`${fieldClass} resize-y ${messageError ? errorFieldClass : ""}`}
           defaultValue={state.values?.message ?? ""}
+          aria-invalid={!!messageError}
+          aria-describedby={messageError ? "message-error" : undefined}
         />
         {messageError && (
           <p id="message-error" className="text-quaternary text-sm">
