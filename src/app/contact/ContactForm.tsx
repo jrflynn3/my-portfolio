@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState } from "react";
 import { sendContactEmail } from "./actions";
 import { initialContactState } from "./contact-state";
 import { GhostButton } from "@/Components/common";
@@ -10,21 +10,24 @@ export function ContactForm() {
     sendContactEmail,
     initialContactState,
   );
-  const formRef = useRef<HTMLFormElement>(null);
 
-  // Clear the fields once a message sends successfully.
-  useEffect(() => {
-    if (state.status === "success") {
-      formRef.current?.reset();
-    }
-  }, [state.status]);
-
+  const {
+    name: nameError,
+    email: emailError,
+    message: messageError,
+  } = state.fieldErrors ?? {};
   const labelClass = "font-medium text-sm md:text-base";
   const fieldClass =
     "rounded-md border border-secondary/35 bg-white/60 px-3 py-2 text-sm md:text-base focus:outline-none focus:border-secondary transition-colors";
+  const errorFieldClass = "border-quaternary focus:border-quaternary";
 
   return (
-    <form ref={formRef} action={formAction} className="flex flex-col gap-5">
+    <form
+      action={formAction}
+      className="flex flex-col gap-5"
+      // validation handled on submission
+      noValidate
+    >
       <div className="flex flex-col gap-1.5">
         <label htmlFor="name" className={labelClass}>
           Name
@@ -34,8 +37,14 @@ export function ContactForm() {
           name="name"
           type="text"
           required
-          className={fieldClass}
+          className={`${fieldClass} ${nameError ? errorFieldClass : ""}`}
+          defaultValue={state.values?.name ?? ""}
         />
+        {nameError && (
+          <p id="name-error" className="text-quaternary text-sm">
+            {nameError}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col gap-1.5">
@@ -47,8 +56,14 @@ export function ContactForm() {
           name="email"
           type="email"
           required
-          className={fieldClass}
+          className={`${fieldClass} ${emailError ? errorFieldClass : ""}`}
+          defaultValue={state.values?.email ?? ""}
         />
+        {emailError && (
+          <p id="email-error" className="text-quaternary text-sm">
+            {emailError}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col gap-1.5">
@@ -60,8 +75,14 @@ export function ContactForm() {
           name="message"
           required
           rows={6}
-          className={`${fieldClass} resize-y`}
+          className={`${fieldClass} resize-y ${messageError ? errorFieldClass : ""}`}
+          defaultValue={state.values?.message ?? ""}
         />
+        {messageError && (
+          <p id="message-error" className="text-quaternary text-sm">
+            {messageError}
+          </p>
+        )}
       </div>
 
       <button
