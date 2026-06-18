@@ -18,8 +18,7 @@ export function ContactForm() {
   } = state.fieldErrors ?? {};
   const labelClass = "font-medium text-sm md:text-base";
   const fieldClass =
-    "rounded-md border border-secondary/35 bg-white/60 px-3 py-2 text-sm md:text-base focus:outline-none focus:border-secondary transition-colors";
-  const errorFieldClass = "border-quaternary focus:border-quaternary";
+    "rounded-md border border-secondary/35 focus:border-secondary bg-white/60 px-3 py-2 text-sm md:text-base focus:outline-none transition-colors aria-invalid:border-quaternary aria-invalid:focus:border-quaternary";
 
   return (
     <form
@@ -37,7 +36,7 @@ export function ContactForm() {
           name="name"
           type="text"
           required
-          className={`${fieldClass} ${nameError ? errorFieldClass : ""}`}
+          className={fieldClass}
           defaultValue={state.values?.name ?? ""}
           aria-invalid={!!nameError}
           aria-describedby={nameError ? "name-error" : undefined}
@@ -58,7 +57,7 @@ export function ContactForm() {
           name="email"
           type="email"
           required
-          className={`${fieldClass} ${emailError ? errorFieldClass : ""}`}
+          className={fieldClass}
           defaultValue={state.values?.email ?? ""}
           aria-invalid={!!emailError}
           aria-describedby={emailError ? "email-error" : undefined}
@@ -79,7 +78,7 @@ export function ContactForm() {
           name="message"
           required
           rows={6}
-          className={`${fieldClass} resize-y ${messageError ? errorFieldClass : ""}`}
+          className={`${fieldClass} resize-y`}
           defaultValue={state.values?.message ?? ""}
           aria-invalid={!!messageError}
           aria-describedby={messageError ? "message-error" : undefined}
