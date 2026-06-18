@@ -3,6 +3,7 @@
 import { Resend } from "resend";
 import type { ContactFormState } from "./contact-state";
 import { z } from "zod";
+import { env } from "@/env";
 
 const contactSchema = z.object({
   name: z
@@ -47,11 +48,11 @@ export async function sendContactEmail(
   const { name, email, message } = parsed.data;
 
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: process.env.RESEND_CONTACT_EMAIL!,
-      to: process.env.RESEND_EMAIL!,
+      from: env.RESEND_CONTACT_EMAIL,
+      to: env.RESEND_EMAIL,
       subject: `Portfolio contact form: ${name}`,
       replyTo: `${email}`,
       text: `From ${name} <${email}>\n\n${message}`,
