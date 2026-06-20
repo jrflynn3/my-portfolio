@@ -57,7 +57,10 @@ export const Header = () => {
       const currentScrollPos = window.scrollY;
       const header = document.getElementById("page-header");
       if (header) {
-        header.style.top = prevScrollPos > currentScrollPos ? "0" : "-90px";
+        header.style.top =
+          prevScrollPos > currentScrollPos
+            ? "0"
+            : "calc(-1 * var(--spacing-header))";
       }
       prevScrollPos = currentScrollPos;
     };
@@ -68,21 +71,21 @@ export const Header = () => {
   return (
     <div
       id="page-header"
-      className="flex w-full bg-secondary sticky transition-[top] duration-300 shadow-md/50"
+      className="min-h-header flex w-full bg-secondary sticky transition-[top] duration-300 shadow-md/50"
     >
-      <nav className="md:flex hidden flex-1 justify-between p-5 items-center">
+      <nav className="md:flex hidden flex-1 justify-between px-5 items-center">
         <HomeIcon />
         <NavBar vertical={false} />
       </nav>
 
-      <nav className="md:hidden flex flex-1 p-5">
+      <nav className="md:hidden flex flex-1 items-center p-5">
         {menuOpen ? (
           <div className="flex flex-1 justify-between">
             <NavBar vertical={true} />
             <MenuButton onClick={setMenuState} expanded={menuOpen} />
           </div>
         ) : (
-          <div className="flex flex-1 justify-between">
+          <div className="flex flex-1 justify-between items-center">
             <HomeIcon />
             <MenuButton onClick={setMenuState} expanded={menuOpen} />
           </div>

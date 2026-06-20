@@ -5,6 +5,8 @@
   --color-secondary: #085056;
   --color-tertiary: #38383b;
   --color-quaternary: #ff5d04;
+
+  --spacing-header: 90px;
 }
 
 * {
