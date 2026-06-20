@@ -10,9 +10,13 @@ export const env = createEnv({
     ),
     RESEND_EMAIL: z.email("RESEND_EMAIL must be a valid email."),
   },
+  client: {
+    NEXT_PUBLIC_SITE_URL: z.url("NEXT_PUBLIC_SITE_URL must be a valid URL"),
+  },
   runtimeEnv: {
     RESEND_API_KEY: process.env.RESEND_API_KEY,
     RESEND_CONTACT_EMAIL: process.env.RESEND_CONTACT_EMAIL,
     RESEND_EMAIL: process.env.RESEND_EMAIL,
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   },
 });

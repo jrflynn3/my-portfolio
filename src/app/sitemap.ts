@@ -1,17 +1,16 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/Data/projects";
-
-const SITE_URL = "https://www.john-flynn.dev";
+import { env } from "@/env";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/about", "/portfolio", "/contact"].map(
     (route) => ({
-      url: `${SITE_URL}${route}`,
-      lastModfied: new Date(),
+      url: `${env.NEXT_PUBLIC_SITE_URL}${route}`,
+      lastModified: new Date(),
     }),
   );
   const portfolioRoutes = projects.map((project) => ({
-    url: `${SITE_URL}/portfolio/${project.slug}`,
+    url: `${env.NEXT_PUBLIC_SITE_URL}/portfolio/${project.slug}`,
     lastModified: new Date(),
   }));
 
