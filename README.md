@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+# john-flynn.dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site for John Flynn
 
-Currently, two official plugins are available:
+Live: [john-flynn.dev](https://www.john-flynn.dev)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## Expanding the ESLint configuration
+- **Next.js 15** (App Router)
+- **React 18** + **TypeScript**
+- **Tailwind CSS v4**
+- **Resend** for transactional email
+- **zod** for runtime schema validation
+- **@t3-oss/env-nextjs** for environment variable validation
+- Deployed to **AWS Amplify Hosting** (Web Compute / SSR)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- File-based routing with the App Router (`/`, `/about`, `/portfolio`, `/portfolio/[slug]`, `/contact`)
+- Statically generated portfolio detail pages via `generateStaticParams` + per-page `generateMetadata`
+- Contact form using Server Actions, with server-side zod validation, per-field error feedback, and accessibility attributes (`aria-invalid`, `aria-describedby`)
+- App Router conventions: `loading.tsx`, `error.tsx`, `not-found.tsx`, `sitemap.ts`, `robots.ts`
+- Type-safe environment variables, validated at server boot via `instrumentation.ts`
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Running locally
+
+```bash
+git clone https://github.com/jrflynn3/webapp.git
+cd my-website
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Create a .env.local:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+RESEND_API_KEY=re_your_key_here
+RESEND_CONTACT_EMAIL=onboarding@resend.dev
+RESEND_EMAIL=your@email.com
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Then:
+
+npm run dev
+Open http://localhost:3000.
+
+## License
+
+[MIT](./LICENSE)
