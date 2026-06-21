@@ -1,4 +1,9 @@
-import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../../constants";
+import {
+  EMAIL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  PORTFOLIO_URL,
+} from "../../constants";
 import { ExternalLink, IconBar } from "../common";
 
 export const Footer = () => {
@@ -13,6 +18,10 @@ export const Footer = () => {
 
       <div className="text-[1.1em] tracking-[2px]">© 2026 John Flynn</div>
       <div className="hidden md:flex gap-x-4">
+        <ExternalLink href={PORTFOLIO_URL} className={linkStyles}>
+          View Source
+        </ExternalLink>
+        ·
         <ExternalLink href={EMAIL} className={linkStyles}>
           Let&apos;s connect
         </ExternalLink>
