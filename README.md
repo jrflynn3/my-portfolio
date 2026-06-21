@@ -32,9 +32,9 @@ npm install
 
 Create a .env.local:
 
-RESEND_API_KEY=re_your_key_here
-RESEND_CONTACT_EMAIL=onboarding@resend.dev
-RESEND_EMAIL=your@email.com
+RESEND_API_KEY=re_your_key_here<br/>
+RESEND_CONTACT_EMAIL=onboarding@resend.dev<br/>
+RESEND_EMAIL=your@email.com<br/>
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 Then:
