@@ -25,7 +25,7 @@ Live: [john-flynn.dev](https://www.john-flynn.dev)
 ## Running locally
 
 ```bash
-git clone https://github.com/jrflynn3/webapp.git
+git clone https://github.com/jrflynn3/my-portfolio.git
 cd my-website
 npm install
 ```
