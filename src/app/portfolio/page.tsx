@@ -60,8 +60,8 @@ export default function Portfolio() {
     <>
       <div className="min-h-screen bg-primary flex flex-col px-5 md:px-10">
         <div className="mx-auto pt-12 pb-8 font-thin leading-relaxed max-w-3xl text-slate-950">
-          A selection of React Native apps I’ve built, focusing on clean UI,
-          maintainable architecture, and real-world use cases.
+          A selection of apps I’ve built, focusing on clean UI, maintainable
+          architecture, and real-world use cases.
         </div>
         <div className="grid flex-col sm:grid-cols-[repeat(auto-fit,minmax(440px,1fr))] pt-6 pb-10 gap-10">
           {projects.map((project) => (

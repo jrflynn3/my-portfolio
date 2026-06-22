@@ -1,8 +1,23 @@
 import movieImage from "../Assets/Images/movie-app.png";
 import realEstateImage from "../Assets/Images/real-estate-app.png";
 import fastFoodImage from "../Assets/Images/fast-food.png";
+import portfolioImage from "../Assets/Images/portfolio.png";
 
 export const projects = [
+  {
+    name: "Personal Portfolio Site",
+    description: "This site itself — built with Next.js 15",
+    features: [
+      "Next.js 15",
+      "App Router",
+      "Server Actions",
+      "TypeScript",
+      "Tailwind",
+    ],
+    link: "https://github.com/jrflynn3/my-portfolio",
+    src: portfolioImage,
+    slug: "portfolio-site",
+  },
   {
     name: "Real Estate",
     description: "Search for real estate in this minimal cross-platform app",
