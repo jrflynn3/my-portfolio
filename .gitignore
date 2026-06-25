@@ -36,3 +36,6 @@ claude.md
 out/
 *.tsbuildinfo
 next-env.d.ts
+
+# Prisma — generated client (regenerated via `prisma generate` / postinstall)
+/src/generated/

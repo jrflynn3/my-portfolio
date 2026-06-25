@@ -1,0 +1,54 @@
+// Prisma schema — https://pris.ly/d/prisma-schema
+// Connection config lives in prisma.config.ts (migrations) and src/lib/prisma.ts
+// This schema defines the models needed for a personal blog
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Post {
+  id          String     @id @default(cuid())
+  title       String
+  slug        String     @unique // drives /blog/[slug] routes
+  excerpt     String?
+  content     String // raw Markdown
+  status      PostStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // A post belongs to at most one category; deleting a category orphans
+  // its posts (SetNull) rather than deleting them.
+  category   Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryId String?
+
+  // Implicit many-to-many: Prisma manages the join table automatically.
+  tags Tag[] @relation("PostTags")
+
+  @@index([status, publishedAt]) // listing query: published, newest first
+  @@index([categoryId])
+}
+
+model Category {
+  id    String @id @default(cuid())
+  name  String @unique
+  slug  String @unique
+  posts Post[]
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String @unique
+  slug  String @unique
+  posts Post[] @relation("PostTags")
+}
