@@ -9,7 +9,7 @@ frontend:
         # Copy runtime env vars into .env.production so the Next.js SSR runtime
         # can read them. Amplify console env vars are only available at build
         # time by default, not to server actions/SSR at request time.
-        - env | grep -e RESEND_ >> .env.production
+        - env | grep -e RESEND_ -e DATABASE_URL >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next
