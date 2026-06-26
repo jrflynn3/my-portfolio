@@ -3,7 +3,11 @@ import { PrismaClient } from "@/generated/prisma/client";
 import { env } from "@/env";
 
 // The connection string is the Supabase transaction pooler (port 6543).
-const adapter = new PrismaPg({ connectionString: env.DATABASE_URL });
+// pg doesn't enable SSL on its own, but Supabase requires it
+const adapter = new PrismaPg({
+  connectionString: env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+});
 
 // In dev, Next.js hot-reload re-evaluates modules on every change. Without a
 // guard, each reload would construct a new PrismaClient (and its own pool),
