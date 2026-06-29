@@ -7,7 +7,7 @@ export function Markdown({ content }: { content: string }) {
     <div className="prose prose-neutral max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
+        rehypePlugins={[[rehypeHighlight, { ignoreMissing: true }]]}
       >
         {content}
       </ReactMarkdown>
