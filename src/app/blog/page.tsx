@@ -23,8 +23,8 @@ export default async function Blog() {
 
   return (
     <div className="min-h-screen bg-primary px-5 md:px-10 py-12">
-      <div className="max-w-3xl">
-        <h1 className="text-4xl md:text-xl font-thin pb-8">Blog</h1>
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold pb-2">Blog</h1>
         <p className="text-lg md:text-xl font-thin pb-8">
           My thoughts on building an upgrading this site.
         </p>
