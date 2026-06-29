@@ -68,7 +68,7 @@ export default async function ProjectPage({ params }: Props) {
             </ExternalLink>
           </div>
 
-          <div className="max-w-[350px] mx-auto md:mx-0">
+          <div className="max-w-[350px] mx-auto">
             <div className="rounded-2xl overflow-hidden bg-white shadow-lg/20">
               <Image
                 src={project.src}

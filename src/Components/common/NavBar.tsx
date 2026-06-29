@@ -24,7 +24,7 @@ const NavLink = ({ path, text }: { path: string; text: string }) => {
 export const NavBar = ({ vertical }: { vertical: boolean }) => {
   const verticalStyles = "flex flex-col text-[1.50em] gap-5 text-primary";
   const horizontalStyles =
-    "flex justify-between text-primary tracking-[2px] text-[1.2em] text-center m-auto";
+    "flex justify-between text-primary tracking-[2px] text-[1.2em] text-center";
   return (
     <nav className={vertical ? verticalStyles : horizontalStyles}>
       <NavLink path="/portfolio" text="Portfolio" />

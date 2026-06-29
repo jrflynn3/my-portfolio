@@ -48,7 +48,7 @@ export default function About() {
           </p>
         </div>
         <div className="hidden md:flex flex-col w-full items-center">
-          <hr className="w-full max-w-[400px] my-6 md:my-10 border-t border-secondary" />
+          <hr className="w-full max-w-[400px] border-t border-secondary" />
           <div className="font-thin pt-5 text-sm md:text-base">
             Find me here
           </div>

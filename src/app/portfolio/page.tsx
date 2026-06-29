@@ -59,11 +59,11 @@ export default function Portfolio() {
   return (
     <>
       <div className="min-h-screen bg-primary flex flex-col px-5 md:px-10">
-        <div className="mx-auto pt-12 pb-8 font-thin leading-relaxed max-w-3xl text-slate-950">
+        <div className="pt-12 pb-8 font-thin leading-relaxed max-w-3xl text-slate-950">
           A selection of apps I’ve built, focusing on clean UI, maintainable
           architecture, and real-world use cases.
         </div>
-        <div className="grid flex-col sm:grid-cols-[repeat(auto-fit,minmax(440px,1fr))] pt-6 pb-10 gap-10">
+        <div className="mx-auto lg:mx-0 grid flex-col sm:grid-cols-[repeat(auto-fit,minmax(440px,1fr))] pt-6 pb-10 gap-10">
           {projects.map((project) => (
             <ProjectCard key={project.name} {...project} />
           ))}
