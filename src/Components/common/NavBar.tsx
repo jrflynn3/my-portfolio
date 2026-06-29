@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { EMAIL } from "../../constants";
-import { ExternalLink } from "./ExternalLink";
 import { usePathname } from "next/navigation";
 
 const NavLink = ({ path, text }: { path: string; text: string }) => {
@@ -28,6 +26,7 @@ export const NavBar = ({ vertical }: { vertical: boolean }) => {
   return (
     <nav className={vertical ? verticalStyles : horizontalStyles}>
       <NavLink path="/portfolio" text="Portfolio" />
+      <NavLink path="/blog" text="Blog" />
       <NavLink path="/about" text="About" />
       <NavLink path="/contact" text="Contact" />
     </nav>
