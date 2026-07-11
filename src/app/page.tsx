@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GhostButton } from "@/Components/common";
+import { GhostButton, RevealOnScroll } from "@/Components/common";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <div
         className={`flex flex-col items-center bg-cover bg-[position:70%_bottom]
-         md:bg-cover md:bg-top bg-no-repeat min-h-[200vh] sm:min-h-[150vh] bg-[url(/images/mountains-bg.jpg)] bg-primary`}
+         md:bg-cover md:bg-top bg-no-repeat min-h-[200vh] sm:min-h-[135vh] bg-[url(/images/mountains-bg.jpg)] bg-primary`}
       >
         <div className="flex flex-col flex-1 pt-40 md:pt-80 text-center">
           <div>
@@ -23,7 +23,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col max-w-4xl items-center bg-primary rounded-2xl px-7 sm:px-15 py-6">
+        <RevealOnScroll className="flex flex-col max-w-4xl items-center bg-primary rounded-2xl px-7 sm:px-15 py-6 mb-40 shadow-lg/35">
           <div className="flex pb-5 max-w-75 sm:max-w-none text-sm sm:text-base">
             I&apos;m a React / React Native developer focused on building clean,
             maintainable mobile experiences. I enjoy collaborating with
@@ -32,8 +32,7 @@ export default function Home() {
           <Link href="/about">
             <GhostButton text="Read more" />
           </Link>
-        </div>
-        <div className="pb-50"></div>
+        </RevealOnScroll>
       </div>
     </>
   );
