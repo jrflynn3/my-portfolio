@@ -86,6 +86,22 @@ this constrains how we connect to the database.
 - The generated client (`src/generated/prisma`) is gitignored and regenerated on
   install.
 
+## Future work (hardening)
+
+Deferred deliberately; neither blocks the feature. Best tackled from a
+non-intercepting network during a dedicated hardening pass.
+
+- **Verified TLS (CA pinning).** Replace `ssl: { rejectUnauthorized: false }` with
+  Supabase's pinned CA certificate so the connection is *verified*, not just
+  encrypted. `ssl: true` alone fails (`SELF_SIGNED_CERT_IN_CHAIN`) because
+  Supabase's chain is rooted in a private CA. Affects `src/lib/prisma.ts` and
+  `prisma/seed.ts`.
+- **Secrets management.** Move `DATABASE_URL` (and `RESEND_API_KEY`) out of plain
+  Amplify environment variables into AWS SSM Parameter Store `SecureString`
+  "environment secrets" — AWS's recommended approach for Gen 1 Hosting. They
+  surface to the build as `process.env.secrets` (JSON), so `amplify.yml` would
+  parse that into `.env.production` instead of `env | grep`.
+
 ## Files
 
 - `prisma/schema.prisma` — models + generator/datasource.
