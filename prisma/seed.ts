@@ -2,10 +2,6 @@ import { readFileSync } from "node:fs";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
 
-// Run via `npm run db:seed` (i.e. `prisma db seed`), which loads .env.local
-// through prisma.config.ts before invoking this script — so DATABASE_URL
-// (the Supabase pooler) is present here. We construct our own client with the
-// driver adapter so the seed exercises the exact runtime connection path.
 const connectionString = process.env.DATABASE_URL;
 if (!connectionString) {
   throw new Error(
@@ -13,65 +9,100 @@ if (!connectionString) {
   );
 }
 
-// The pg driver (unlike Prisma's migrate engine) does NOT enable SSL on its
-// own, but Supabase requires it — without this the server terminates the
-// connection mid-handshake. connectionTimeoutMillis caps Prisma 7's otherwise
-// infinite connect wait so failures surface fast instead of hanging.
 const adapter = new PrismaPg({
   connectionString,
   connectionTimeoutMillis: 10_000,
   ssl: { rejectUnauthorized: false },
 });
-
 const prisma = new PrismaClient({ adapter });
 
-// Post bodies are authored as Markdown files alongside the seed (run from the
-// project root via `npm run db:seed`) and loaded into the DB content column.
-const helloWorldContent = readFileSync(
-  "prisma/content/hello-world.md",
-  "utf-8",
-);
+const readPost = (file: string) =>
+  readFileSync(`prisma/content/${file}`, "utf-8");
+
+// Every tag used across posts (upserted once, referenced by slug below).
+const tags = [
+  { name: "Next.js", slug: "nextjs" },
+  { name: "AWS Amplify", slug: "aws-amplify" },
+  { name: "Prisma", slug: "prisma" },
+  { name: "Supabase", slug: "supabase" },
+  { name: "Postgres", slug: "postgres" },
+  { name: "Serverless", slug: "serverless" },
+];
+
+const posts = [
+  {
+    slug: "hello-world",
+    title: "Hello, World",
+    excerpt:
+      "Moving the site off Firebase to AWS Amplify and rebuilding on Next.js.",
+    file: "hello-world.md",
+    publishedAt: new Date("2026-06-20T12:00:00"),
+    tagSlugs: ["nextjs", "aws-amplify"],
+  },
+  {
+    slug: "adding-a-database",
+    title: "Giving the Site a Database",
+    excerpt:
+      "Adding a Postgres database with Supabase and Prisma — and why a blog needs one.",
+    file: "adding-a-database.md",
+    publishedAt: new Date("2026-06-25T12:00:00"),
+    tagSlugs: ["prisma", "supabase"],
+  },
+  {
+    slug: "connection-pooling",
+    title: "Why My Database Needs a Bouncer",
+    excerpt:
+      "Serverless + Postgres needs a connection pooler — here's why, and the two-string setup it takes.",
+    file: "connection-pooling.md",
+    publishedAt: new Date("2026-06-29T12:00:00"),
+    tagSlugs: ["postgres", "serverless"],
+  },
+];
 
 async function main() {
-  // Upserts keyed on unique slugs make this safe to run repeatedly.
   const category = await prisma.category.upsert({
     where: { slug: "engineering" },
     update: {},
     create: { name: "Engineering", slug: "engineering" },
   });
 
-  const tags = await Promise.all(
-    [
-      { name: "Next.js", slug: "nextjs" },
-      { name: "AWS Amplify", slug: "aws-amplify" },
-    ].map((tag) =>
-      prisma.tag.upsert({ where: { slug: tag.slug }, update: {}, create: tag }),
-    ),
+  // Upsert all tags, remembering each slug's generated id.
+  const tagIdBySlug = new Map<string, string>();
+  for (const tag of tags) {
+    const row = await prisma.tag.upsert({
+      where: { slug: tag.slug },
+      update: {},
+      create: tag,
+    });
+    tagIdBySlug.set(tag.slug, row.id);
+  }
+
+  for (const post of posts) {
+    const tagConnect = post.tagSlugs.map((slug) => ({
+      id: tagIdBySlug.get(slug)!,
+    }));
+    const data = {
+      title: post.title,
+      excerpt: post.excerpt,
+      content: readPost(post.file),
+      status: "PUBLISHED" as const,
+      publishedAt: post.publishedAt,
+    };
+    await prisma.post.upsert({
+      where: { slug: post.slug },
+      update: { ...data, tags: { set: tagConnect } },
+      create: {
+        ...data,
+        slug: post.slug,
+        category: { connect: { id: category.id } },
+        tags: { connect: tagConnect },
+      },
+    });
+  }
+
+  console.log(
+    `✅ Seed complete: 1 category, ${tags.length} tags, ${posts.length} published posts.`,
   );
-  const tagConnect = tags.map((tag) => ({ id: tag.id }));
-
-  const postData = {
-    title: "Hello, World",
-    excerpt:
-      "Moving the site off Firebase to AWS Amplify and rebuilding on Next.js.",
-    content: helloWorldContent,
-    status: "PUBLISHED" as const,
-  };
-
-  await prisma.post.upsert({
-    where: { slug: "hello-world" },
-    // Refresh the editable fields + tags on re-seed; leave publishedAt as-is.
-    update: { ...postData, tags: { set: tagConnect } },
-    create: {
-      ...postData,
-      slug: "hello-world",
-      publishedAt: new Date(),
-      category: { connect: { id: category.id } },
-      tags: { connect: tagConnect },
-    },
-  });
-
-  console.log("✅ Seed complete: 1 category, 2 tags, 1 published post.");
 }
 
 main()
