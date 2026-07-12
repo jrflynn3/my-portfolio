@@ -1,7 +1,26 @@
 "use client";
 
-import Link from "next/link";
+import Link, { useLinkStatus } from "next/link";
 import { usePathname } from "next/navigation";
+
+const NavLinkLabel = ({
+  text,
+  isActive,
+}: {
+  text: string;
+  isActive: boolean;
+}) => {
+  const { pending } = useLinkStatus();
+  return (
+    <span
+      className={`px-[1em] transition-colors duration-150 active:duration-0 active:text-secondary group-focus:underline ${
+        pending || isActive ? "text-[#0e858f] underline" : ""
+      }`}
+    >
+      {text}
+    </span>
+  );
+};
 
 const NavLink = ({ path, text }: { path: string; text: string }) => {
   const pathname = usePathname();
@@ -10,11 +29,11 @@ const NavLink = ({ path, text }: { path: string; text: string }) => {
   return (
     <Link
       href={path}
-      className={`px-[1em] transition-all delay-75 hover:text-shadow-lg/40 focus:underline focus:text-secondary hover:-translate-y-0.5 ${
-        isActive ? "text-[#0C8A91] font-black text-shadow-lg/30 underline" : ""
+      className={`group transition-[transform,text-shadow] duration-150 hover:text-shadow-lg/40 hover:-translate-y-0.5 ${
+        isActive ? "text-shadow-lg/30" : ""
       }`}
     >
-      {text}
+      <NavLinkLabel text={text} isActive={isActive} />
     </Link>
   );
 };
