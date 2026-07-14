@@ -1,6 +1,6 @@
+import { PostCard } from "@/Components/common";
 import { getPublishedPosts } from "@/lib/posts";
 import { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Blog | John Flynn",
@@ -9,14 +9,6 @@ export const metadata: Metadata = {
 
 // Lets Next know to reflect the DB; don't pre-render at build.
 export const dynamic = "force-dynamic";
-
-const Chip = ({ text }: { text: string }) => {
-  return (
-    <span className="border border-gray-400 rounded-full px-3 py-1 text-sm font-thin whitespace-nowrap">
-      {text}
-    </span>
-  );
-};
 
 export default async function Blog() {
   const posts = await getPublishedPosts();
@@ -34,31 +26,7 @@ export default async function Blog() {
           <ul className="flex flex-col gap-9">
             {posts.map((post) => (
               <li key={post.id}>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="block bg-white rounded-xl shadow-lg/20 hover:shadow-xl/40 transition-all delay-100 p-5"
-                >
-                  <h2 className="font-bold text-xl md:text-2xl">
-                    {post.title}
-                  </h2>
-                  {post.publishedAt && (
-                    <p className="text-sm font-thin text-tertiary/70 pt-1">
-                      {post.publishedAt.toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
-                  )}
-                  {post.excerpt && (
-                    <p className="font-thin pt-3">{post.excerpt}</p>
-                  )}
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    {post.tags.map((tag) => (
-                      <Chip key={tag.id} text={tag.name} />
-                    ))}
-                  </div>
-                </Link>
+                <PostCard post={post} />
               </li>
             ))}
           </ul>
