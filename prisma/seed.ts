@@ -57,6 +57,15 @@ const posts = [
     publishedAt: new Date("2026-06-29T12:00:00"),
     tagSlugs: ["postgres", "serverless"],
   },
+  {
+    slug: "tag-filtering",
+    title: "Querying Across a Relationship",
+    excerpt:
+      "Filtering the blog by tag — my first query that reaches across a many-to-many relationship.",
+    file: "tag-filtering.md",
+    publishedAt: new Date("2026-07-10T12:00:00"),
+    tagSlugs: ["prisma", "postgres"],
+  },
 ];
 
 async function main() {
