@@ -1,4 +1,4 @@
-import { Markdown } from "@/Components/common";
+import { Markdown, TagLink } from "@/Components/common";
 import { getPostBySlug } from "@/lib/posts";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -22,14 +22,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.excerpt ?? undefined,
   };
 }
-
-const Chip = ({ text }: { text: string }) => {
-  return (
-    <span className="border border-gray-400 rounded-full px-3 py-1 text-sm font-thin whitespace-nowrap">
-      {text}
-    </span>
-  );
-};
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
@@ -64,7 +56,7 @@ export default async function PostPage({ params }: Props) {
 
         <div className="flex flex-wrap gap-2 pb-6">
           {post.tags.map((tag) => (
-            <Chip key={tag.id} text={tag.name} />
+            <TagLink key={tag.id} name={tag.name} slug={tag.slug} />
           ))}
         </div>
 
