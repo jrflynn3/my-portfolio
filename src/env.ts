@@ -13,6 +13,9 @@ export const env = createEnv({
     // DIRECT_URL is intentionally NOT here: it's only used by `prisma migrate`
     // via prisma.config.ts, never at app runtime.
     DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
+    AUTH_SECRET: z.string().min(1),
+    AUTH_GITHUB_ID: z.string().min(1),
+    AUTH_GITHUB_SECRET: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_SITE_URL: z.url("NEXT_PUBLIC_SITE_URL must be a valid URL"),
@@ -23,5 +26,8 @@ export const env = createEnv({
     RESEND_EMAIL: process.env.RESEND_EMAIL,
     DATABASE_URL: process.env.DATABASE_URL,
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+    AUTH_SECRET: process.env.AUTH_SECRET,
+    AUTH_GITHUB_ID: process.env.AUTH_GITHUB_ID,
+    AUTH_GITHUB_SECRET: process.env.AUTH_GITHUB_SECRET,
   },
 });
