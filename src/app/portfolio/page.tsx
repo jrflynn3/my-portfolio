@@ -31,7 +31,6 @@ const ProjectCard = ({
   features,
   name,
   description,
-  link,
   src,
   slug,
 }: ProjectCardProps) => {
