@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog | John Flynn",
-  description: "My thoughts on building an upgrading this site.",
+  description: "My thoughts on building and upgrading this site.",
 };
 
 // Lets Next know to reflect the DB; don't pre-render at build.
