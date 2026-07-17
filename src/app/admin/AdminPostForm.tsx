@@ -68,6 +68,11 @@ export function AdminPostForm() {
         className={`${fieldClass} resize-y`}
       />
       <input
+        name="category"
+        placeholder="Category (optional)"
+        className={fieldClass}
+      />
+      <input
         name="tags"
         placeholder="Tags, comma-separated (e.g. Next.js, Prisma)"
         className={fieldClass}

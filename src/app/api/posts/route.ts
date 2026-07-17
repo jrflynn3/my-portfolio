@@ -14,6 +14,7 @@ const createPostSchema = z.object({
     ),
   excerpt: z.string().trim().optional(),
   content: z.string().trim().min(1, "Content is required."),
+  category: z.string().trim().optional(),
   tags: z.string().optional(), // comma-separated names
   status: z.enum(["DRAFT", "PUBLISHED"]),
 });
@@ -45,7 +46,16 @@ export async function POST(request: Request) {
     const message = parsed.error.issues[0]?.message ?? "Invalid input.";
     return NextResponse.json({ error: message }, { status: 400 });
   }
-  const { title, slug, excerpt, content, tags, status } = parsed.data;
+  const { title, slug, excerpt, content, category, tags, status } = parsed.data;
+
+  const categoryConnect = category
+    ? {
+        connectOrCreate: {
+          where: { slug: slugify(category) },
+          create: { name: category, slug: slugify(category) },
+        },
+      }
+    : undefined;
 
   const tagInputs = Array.from(
     new Map(
@@ -67,6 +77,7 @@ export async function POST(request: Request) {
         content,
         status,
         publishedAt: status === "PUBLISHED" ? new Date() : null,
+        category: categoryConnect,
         tags: {
           connectOrCreate: tagInputs.map(({ slug, name }) => ({
             where: { slug },
