@@ -9,10 +9,16 @@ if (!connectionString) {
   );
 }
 
+const caCert = process.env.SUPABASE_CA_CERT_B64
+  ? Buffer.from(process.env.SUPABASE_CA_CERT_B64, "base64").toString("utf8")
+  : undefined;
+
 const adapter = new PrismaPg({
   connectionString,
   connectionTimeoutMillis: 10_000,
-  ssl: { rejectUnauthorized: false },
+  ssl: caCert
+    ? { ca: caCert, rejectUnauthorized: true }
+    : { rejectUnauthorized: false },
 });
 const prisma = new PrismaClient({ adapter });
 
