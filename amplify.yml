@@ -6,10 +6,9 @@ frontend:
         - npm ci --cache .npm --prefer-offline
     build:
       commands:
-        # Copy runtime env vars into .env.production so the Next.js SSR runtime
-        # can read them. Amplify console env vars are only available at build
-        # time by default, not to server actions/SSR at request time.
-        - env | grep -e RESEND_ -e DATABASE_URL -e AUTH_ -e SUPABASE_ >> .env.production
+        # Amplify console env vars aren't exposed to the SSR runtime, so copy the
+        # runtime vars into .env.production at build.
+        - node scripts/write-env-production.mjs
         - npm run build
   artifacts:
     baseDirectory: .next

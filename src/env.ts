@@ -13,6 +13,8 @@ export const env = createEnv({
     // DIRECT_URL is intentionally NOT here: it's only used by `prisma migrate`
     // via prisma.config.ts, never at app runtime.
     DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
+    // Auth.js (next-auth v5) reads these from process.env by convention —
+    // nothing imports env.AUTH_*.
     AUTH_SECRET: z.string().min(1),
     AUTH_GITHUB_ID: z.string().min(1),
     AUTH_GITHUB_SECRET: z.string().min(1),
