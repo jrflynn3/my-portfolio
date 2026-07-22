@@ -17,9 +17,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) return { title: "Post not found | John Flynn" };
 
+  const description =
+    post.excerpt ??
+    post.content
+      .replace(/[#>*_`\-]/g, "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 155);
+
   return {
     title: `${post.title} | John Flynn`,
-    description: post.excerpt ?? undefined,
+    description,
   };
 }
 
