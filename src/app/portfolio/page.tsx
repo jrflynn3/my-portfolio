@@ -38,7 +38,12 @@ const ProjectCard = ({
     <Link href={`/portfolio/${slug}`}>
       <div className="flex flex-col min-w-[320px] max-w-[550px] max-h-[700px] items-center justify-center bg-white rounded-t-3xl rounded-b-md overflow-hidden shadow-lg/20 hover:shadow-xl/40 transition-all delay-100">
         <div className="h-[300px] sm:h-[500px] w-full flex justify-center items-start">
-          <Image src={src} alt={`${name} preview`} loading="lazy" />
+          <Image
+            src={src}
+            alt={`${name} preview`}
+            loading="lazy"
+            sizes="(min-width: 640px) 550px, 100vw"
+          />
         </div>
         <div className="flex flex-col w-full min-h-[170px] bg-[#f2f5f5] px-5 py-3">
           <h1 className="font-bold text-lg md:text-2xl">{name}</h1>

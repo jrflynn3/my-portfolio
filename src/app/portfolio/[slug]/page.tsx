@@ -73,6 +73,7 @@ export default async function ProjectPage({ params }: Props) {
               <Image
                 src={project.src}
                 alt={`${project.name} preview`}
+                sizes="350px"
                 className="w-full h-auto"
               />
             </div>
