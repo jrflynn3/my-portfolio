@@ -86,21 +86,32 @@ this constrains how we connect to the database.
 - The generated client (`src/generated/prisma`) is gitignored and regenerated on
   install.
 
-## Future work (hardening)
+## Hardening (implemented 2026-07)
 
-Deferred deliberately; neither blocks the feature. Best tackled from a
-non-intercepting network during a dedicated hardening pass.
+Both items originally deferred here are now done.
 
-- **Verified TLS (CA pinning).** Replace `ssl: { rejectUnauthorized: false }` with
-  Supabase's pinned CA certificate so the connection is *verified*, not just
-  encrypted. `ssl: true` alone fails (`SELF_SIGNED_CERT_IN_CHAIN`) because
-  Supabase's chain is rooted in a private CA. Affects `src/lib/prisma.ts` and
-  `prisma/seed.ts`.
-- **Secrets management.** Move `DATABASE_URL` (and `RESEND_API_KEY`) out of plain
-  Amplify environment variables into AWS SSM Parameter Store `SecureString`
-  "environment secrets" — AWS's recommended approach for Gen 1 Hosting. They
-  surface to the build as `process.env.secrets` (JSON), so `amplify.yml` would
-  parse that into `.env.production` instead of `env | grep`.
+- **Verified TLS (CA pinning).** The `pg` driver connects with a **dev/prod split**
+  (`src/lib/prisma.ts`, `prisma/seed.ts`): dev stays `ssl: { rejectUnauthorized: false }`
+  (survives corporate TLS-inspection proxies), prod pins Supabase's CA and verifies
+  (`{ ca, rejectUnauthorized: true }`). The CA is delivered as a base64 env var
+  `SUPABASE_CA_CERT_B64`; verification engages only when it's present. Closes the
+  "encrypted but unauthenticated" gap — `ssl: true` alone fails with
+  `SELF_SIGNED_CERT_IN_CHAIN` because Supabase's chain is rooted in a private CA.
+- **Secrets → SSM.** The four true secrets (`DATABASE_URL`, `RESEND_API_KEY`,
+  `AUTH_SECRET`, `AUTH_GITHUB_SECRET`) live in **SSM Parameter Store `SecureString`s**
+  under `/amplify/<app-id>/<branch>/`. Amplify surfaces them at build as
+  `process.env.secrets` (JSON); `scripts/write-env-production.mjs` parses that into
+  `.env.production`, alongside the non-secrets (plain Amplify env vars). Requires the
+  Amplify **service role** to have `ssm:GetParametersByPath` + `kms:Decrypt`.
+  (Amplify's console "Secrets" section is the managed equivalent of this same
+  SSM-backed mechanism.)
+
+**Deploy lessons worth remembering:**
+- **`AUTH_URL` must be set explicitly on Amplify.** Auth.js can't infer its host
+  behind Amplify's proxy and falls back to `localhost:3000`, breaking OAuth.
+- **Env/secret changes need a *fresh build*** — values are baked into
+  `.env.production` at build time, so a redeploy of an existing artifact won't pick
+  them up.
 
 ## Files
 
@@ -109,3 +120,4 @@ non-intercepting network during a dedicated hardening pass.
 - `src/lib/prisma.ts` — runtime client singleton (driver adapter + SSL).
 - `src/env.ts` — validates `DATABASE_URL`.
 - `prisma/seed.ts` — sample data; mirrors the runtime connection.
+- `scripts/write-env-production.mjs` — build step: writes non-secrets + SSM secrets (`process.env.secrets`) into `.env.production`.
