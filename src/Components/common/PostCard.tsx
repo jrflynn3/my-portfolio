@@ -12,7 +12,7 @@ export function PostCard({ post }: PostCardProps) {
       </h2>
 
       {post.publishedAt && (
-        <p className="text-sm font-thin text-tertiary/70 pt-1">
+        <p className="text-sm font-thin text-tertiary pt-1">
           {post.publishedAt.toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
