@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { GhostButton, RevealOnScroll } from "@/Components/common";
 import type { Metadata } from "next";
 
@@ -11,10 +12,15 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <div
-        className={`flex flex-col items-center bg-cover bg-[position:70%_bottom]
-         md:bg-cover md:bg-top bg-no-repeat min-h-[200vh] sm:min-h-[135vh] bg-[url(/images/mountains-bg.jpg)] bg-primary`}
-      >
+      <div className="relative isolate flex flex-col items-center min-h-[200vh] sm:min-h-[135vh] bg-primary">
+        <Image
+          src="/images/mountains-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="-z-10 object-cover object-bottom md:object-top"
+        />
         <div className="flex flex-col flex-1 pt-40 md:pt-80 text-center">
           <div>
             <h1 className="text-5xl sm:text-6xl">John Flynn</h1>
