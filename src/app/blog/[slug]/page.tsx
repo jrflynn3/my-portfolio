@@ -41,7 +41,7 @@ export default async function PostPage({ params }: Props) {
 
         <h1 className="text-4xl md:text-5xl font-bold pb-2">{post.title}</h1>
 
-        <div className="flex flex-wrap items-center gap-x-3 pb-4 text-sm font-thin text-tertiary/70">
+        <div className="flex flex-wrap items-center gap-x-3 pb-4 text-sm font-thin text-tertiary">
           {post.publishedAt && (
             <span>
               {post.publishedAt.toLocaleDateString("en-US", {
